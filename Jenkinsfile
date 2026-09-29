@@ -20,9 +20,9 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'sudo cp target/task-manager.war /var/lib/tomca11/webapps/task-manager.war'
-                sh 'sudo systemctl restart tomcat11'
-                }
+                sh 'sudo cp -rvf target/task-manager.war ${deploydir}'
+                sh 'sudo systemctl restart tomcat'
+            }
         }
        
     }
