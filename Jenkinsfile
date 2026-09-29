@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment{
+        deploydir="/var/lib/tomcat11/webapps"
+    }
+
     stages {
         
         stage('Build') {
@@ -13,6 +17,23 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        
+
+        stage('Deploy') {
+            steps {
+                sh 'sudo cp target/task-manager.war /var/lib/tomca11/webapps/task-manager.war'
+                sh 'sudo systemctl restart tomcat11'
+                }
+        }
+       
+    }
+
+    post{
+        success{
+            echo"Successfull!1"
+        }
+
+        failure{
+            echo"failed"
+        }
     }
 }
