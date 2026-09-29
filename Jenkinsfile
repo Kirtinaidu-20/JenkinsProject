@@ -20,7 +20,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'sudo cp -rvf target/vivekapp.war ${deploydir}/task-manager.war'
+                sh 'sudo cp -rvf target/vivekapp.war ${deploydir}'
                 sh 'sudo systemctl restart tomcat'
             }
         }
