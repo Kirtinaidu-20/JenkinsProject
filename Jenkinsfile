@@ -17,11 +17,6 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage('Deploy') {
-            steps {
-                sh 'cp target/vivekapp.war /var/lib/tomcat9/webapps/'
-                sh 'sudo systemctl restart tomcat9'
-            }
-        }
+        
     }
 }
