@@ -9,9 +9,9 @@
     <groupId>com.myapplication.app</groupId>
     <artifactId>task-manager</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>kirtiapp</packaging>
+    <packaging>war</packaging>
 
-    <name>vivekapp</name>
+    <name>app</name>
 
     <!-- Java version -->
     <properties>
