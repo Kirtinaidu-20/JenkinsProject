@@ -20,7 +20,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'sudo cp -rvf target/task-manager.war ${deploydir}'
+                sh 'sudo cp -rvf target/app.war ${deploydir}'
                 sh 'sudo systemctl restart tomcat'
             }
         }
