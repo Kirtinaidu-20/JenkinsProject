@@ -1,27 +1,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Project identity -->
-    <groupId>com.myapplication.app</groupId>
+    <groupId>com.vivek.app</groupId>
     <artifactId>task-manager</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>app</name>
+    <name>vivekapp</name>
 
-    <!-- Java version -->
     <properties>
         <maven.compiler.release>11</maven.compiler.release>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- Dependencies -->
     <dependencies>
-        <!-- Servlet API (needed to compile servlets, Tomcat provides at runtime) -->
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -29,28 +25,21 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- JSP API (optional, useful if you use JSPs) -->
-        <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>2.3.3</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- JUnit for tests -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
-    <!-- Build settings -->
     <build>
         <finalName>vivekapp</finalName>
+
         <plugins>
-            <!-- Compiler plugin -->
+
+            <!-- FIX compiler version + Java version -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -60,31 +49,27 @@
                 </configuration>
             </plugin>
 
-            <!-- WAR plugin -->
+            <!-- FIX war plugin (modern version) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
             </plugin>
-
-            <!-- Surefire plugin: runs JUnit tests -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
-            </plugin>
-
-            <!-- JaCoCo plugin: test coverage -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.11</version>
+
                 <executions>
+
+                    <!-- Attach JaCoCo agent -->
                     <execution>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
+
+                    <!-- Generate report -->
                     <execution>
                         <id>report</id>
                         <phase>test</phase>
@@ -112,8 +97,11 @@
                             </rules>
                         </configuration>
                     </execution>
+
                 </executions>
             </plugin>
+
         </plugins>
     </build>
+
 </project>
