@@ -21,7 +21,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'sudo cp -rvf target/vivekapp.war ${deploydir}'
-                sh 'sudo systemctl restart tomcat'
+                sh 'sudo systemctl restart tomcat11'
             }
         }
        
