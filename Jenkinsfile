@@ -1,9 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        deploydir = "/var/lib/tomcat11/webapps"
-    }
 
     stages {
         stage('Build') {
@@ -17,15 +14,15 @@ pipeline {
                 sh 'mvn test'
             }
         }
-
         stage('Deploy') {
             steps {
-                // Copy the WAR file built by Maven
-                sh 'sudo cp -rvf target/vivekapp.war ${deploydir}/vivekapp.war'
-                // Restart the correct Tomcat service
+                cd /var/lib/jenkins/workspace/Jenkins/src/main/webapp
+                sh 'sudo cp /var/lib/jenkins/workspace/Jenkins/target/vivekapp.war /var/lib/tomcat11/webapps/vivekapp.war'
                 sh 'sudo systemctl restart tomcat11'
             }
         }
+
+        
     }
 
     post {
